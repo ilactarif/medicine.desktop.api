@@ -1,10 +1,10 @@
-İLAÇ TARİF'e reçete aktarımı
+ilaçtarif®'e veri aktarımı
 ============================
 
-Bu dökümantasyon İlaç Tarif uygulamasına nasıl reçete aktarabileceğinizi
+Bu dökümantasyon ilaçtarif® uygulamasına nasıl reçete aktarabileceğinizi
 anlatır.
 
-Reçete aktarımla İlaç Tarif uygulamasına argüman göndererek gerçekleşir.
+Reçete aktarımla ilaçtarif® uygulamasına argüman göndererek gerçekleşir.
 
 İki farklı veri aktarımı mevcuttur:
 
@@ -143,7 +143,7 @@ Olmayan bilgileri `null`, `""` olarak gönderebilir veya o fieldi hiç jsona ekl
 
 # 3. `MedicineHelper` Sınıfı
 
-`MedicineHelper` sınıfı İlaç Tarif uygulamasına reçete ve elden ilaç listesi aktarırken kullanılır.
+`MedicineHelper` sınıfı ilaçtarif® uygulamasına reçete ve elden ilaç listesi aktarırken kullanılır.
 
 ## 3.1 `MedicineHelper` sınıfı ile reçete aktarımı
 
