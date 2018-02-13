@@ -1,22 +1,20 @@
 ilaçtarif®'e veri aktarımı
 ============================
 
-Bu dökümantasyon ilaçtarif® uygulamasına nasıl reçete aktarabileceğinizi
+Bu dökümantasyon ilaçtarif® uygulamasına nasıl veri aktarabileceğinizi
 anlatır.
 
-Reçete aktarımla ilaçtarif® uygulamasına argüman göndererek gerçekleşir.
+Veri aktarımı ilaçtarif® uygulamasına argüman göndererek gerçekleşir.
 
-İki farklı veri aktarımı mevcuttur:
-
-# 1. Reçete aktarımı  
+# 1. Veri aktarımı genel yapısı
 
     "C:\Program Files\ALTERNET\Medicine\Medicine.exe" api.prescription={json}  
 
-### 1.1 Jsonda (Reçetede) bulunabilecek bütün değerler
+### 1.1 Jsonda bulunabilecek bütün değerler
 
 ``` json
 {
-  "SenderApplication": "Reçeteyi gönderen uygulama",
+  "SenderApplication": "Veriyi gönderen uygulama",
   "DoctorName": "Doktor Ad",
   "DoctorSurname": "Doktor Soyad",
   "Drugs": [
