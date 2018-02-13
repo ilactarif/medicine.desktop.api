@@ -46,7 +46,7 @@ Veri aktarımı ilaçtarif® uygulamasına argüman göndererek gerçekleşir.
 
 Olmayan bilgileri `null`, `""` olarak gönderebilir veya o fieldi hiç jsona eklemeden de gönderebilirsiniz.
 
-Örnek Json
+### Örnek Json
 
 ``` json
 {
@@ -67,7 +67,9 @@ Olmayan bilgileri `null`, `""` olarak gönderebilir veya o fieldi hiç jsona ekl
 }
 ```
 
-Örnek Kullanım
+#### NOT: Veri gönderme aşamasında bir ilacın oluşabilmesi için en az 1 barkod numarası göndermek zorunludur.
+
+### Örnek Kullanım
 
 ```
 "C:\Program Files\ALTERNET\Medicine\Medicine.exe" api.prescription= {"DoctorName":"","DoctorSurname":null,"Drugs":[{"Barcodes":["123412341"]},{"Barcodes":["123412395"]}]}
