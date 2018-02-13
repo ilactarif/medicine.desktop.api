@@ -155,7 +155,7 @@ Prescription prescription = new Prescription();
 //Gerekli reçete bilgilerini doldurunuz.
 
 IJsonSerializer serializer = new JsonSerializer();
-MedicineHelper helper = new MedicineHelper(jsonSerializer);
+MedicineHelper helper = new MedicineHelper(serializer);
 helper.Send(prescription);
 ```
 
