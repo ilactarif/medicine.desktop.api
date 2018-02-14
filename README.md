@@ -147,7 +147,7 @@ Olmayan bilgileri `null`, `""` olarak gönderebilir veya o fieldi hiç jsona ekl
 
 ## 3.1 `MedicineHelper` sınıfı ile reçete aktarımı
 
-Demo uygulama ![Program.cs](/ConsoleApp1/Program.cs)
+Demo uygulama [Program.cs](/ConsoleApp1/Program.cs)
 
 ``` C#
 Prescription prescription = new Prescription();
