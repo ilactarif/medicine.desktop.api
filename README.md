@@ -6,6 +6,8 @@ anlatır.
 
 Veri aktarımı ilaçtarif® uygulamasına argüman göndererek gerçekleşir.
 
+`Json` dosyasını kendi yöntemleriniz ile veya bizim hazırladığımız sınıflar yardımı ile oluşturabilirsiniz.
+
 # 1. Veri aktarımı genel yapısı
 
     "C:\Program Files\ALTERNET\Medicine\Medicine.exe" api.prescription={json}  
