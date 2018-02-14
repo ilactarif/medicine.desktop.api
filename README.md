@@ -161,7 +161,7 @@ helper.Send(prescription);
 
 ### Newtonsoft.Json ile JsonSerializer sınıfı örneği
 
-https://github.com/erkantaylan/medicine.desktop.api/blob/e63420ef510637c4eefcf2ad52a8370fe6eed81e/ConsoleApp1/Program.cs#L32-L36
+https://github.com/ilactarif/medicine.desktop.api/blob/e102624cd3d18e70ef76ded24318e22028cb67da/ConsoleApp1/Program.cs#L32-L36
 
 
 ``` C#
