@@ -74,7 +74,9 @@ Olmayan bilgileri `null`, `""` olarak gönderebilir veya o fieldi hiç jsona ekl
 ### Örnek Kullanım
 
 ```
-"C:\Program Files\ALTERNET\Medicine\Medicine.exe" api.prescription= {"DoctorName":"","DoctorSurname":null,"Drugs":[{"Barcodes":["123412341"]},{"Barcodes":["123412395"]}]}
+"C:\Program Files\ALTERNET\Medicine\Medicine.exe" "api.prescription={\"SenderApplication\":\"Veriyi gönderen uygulama\",\"DoctorName\":\"Doktor Ad\",\"DoctorSurname\":\"Doktor Soyad\",\"Drugs\":[{\"Barcodes\":[\"8699241771590\",\"123412342\",\"123412343\"],\"Difference\":0.0,\"Dosage1\":1,\"Dosage2\":5.0,\"EndDate\":\"21/02/2018\",\"Message\":\"1b.3d\",\"Name\":\"NEXIUM 40 MG.28 TABLET\",\"Period1\":1,\"Period2\":3,\"Price\":50.0,\"Quantity\":1,\"Report\":\"04.03\"}],\"Name\":\"Hasta Adi\",\"PrescriptionNo\":\"1b2b3b4\",\"Surname\":\"Hasta Soyadi\",\"Tc\":\"12345678901\"}"
+
+"C:\Program Files\ALTERNET\Medicine\Medicine.exe" "api.prescription={\"DoctorName\":\"\",\"DoctorSurname\":null,\"Drugs\":[{\"Barcodes\":[\"8699241771590\"]},{\"Barcodes\":[\"123412395\"]}]}"
 ```
 
 # 2. `MedicineHelper` Sınıfı
