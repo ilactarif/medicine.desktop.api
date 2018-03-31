@@ -12,12 +12,29 @@ namespace ConsoleApp1 {
             IJsonSerializer serializer = new JsonSerializer();
             MedicineHelper helper = new MedicineHelper(serializer);
             Prescription prescription = new Prescription();
-            prescription.DoctorName = "Bora";
+            prescription.DoctorName = "Doktor Ad";
+            prescription.DoctorSurname = "Doctor Soyad";
+            prescription.Name = "Hasta Ad";
+            prescription.Surname = "Hasta Soyad";
+            prescription.PrescriptionNo = "Recete No";
+            prescription.Tc = "hasta tc";
+            prescription.SenderApplication = "Demo Otomasyon Uygulamasi";
             prescription.Drugs = new List<Drug> {
                 new Drug {
                     Barcodes = new List<string> {
-                        "123412341"
-                    }
+                        "8699546031870"
+                    },
+                    Name = "ILAC ADI",
+                    Report = "91.24",
+                    Price = 15,
+                    Difference = 0,
+                    EndDate = "13/13/2323",
+                    Message = "yok",
+                    Dosage1 = 1,
+                    Dosage2 = 2.5F,
+                    Period1 = 1,
+                    Period2 = PeriodTypes.Gunde,
+                    Quantity = 1
                 },
                 new Drug {
                     Barcodes = new List<string> {

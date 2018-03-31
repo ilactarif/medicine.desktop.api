@@ -20,8 +20,13 @@ namespace Medicine.Desktop.Api {
         /// </summary>
         /// <param name="prescription"></param>
         public void Send(Prescription prescription) {
-            string arguments = $"api.prescription={Serializer.ToJson(prescription)}";
+            string arguments = $"api.prescription={Base64Encode(Serializer.ToJson(prescription))}";
             Send(arguments);
+        }
+
+        public static string Base64Encode(string text) {
+            byte[] plainTextBytes = System.Text.Encoding.UTF8.GetBytes(text);
+            return System.Convert.ToBase64String(plainTextBytes);
         }
 
         private static void Send(string arguments) {
