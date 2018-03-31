@@ -6,6 +6,8 @@ anlatır.
 
 Veri aktarımı ilaçtarif® uygulamasına argüman göndererek gerçekleşir.
 
+`Json` dosyasını kendi yöntemleriniz ile veya bizim hazırladığımız sınıflar yardımı ile oluşturabilirsiniz.
+
 # 1. Veri aktarımı genel yapısı
 
     "C:\Program Files\ALTERNET\Medicine\Medicine.exe" api.prescription={json}  
@@ -72,10 +74,74 @@ Olmayan bilgileri `null`, `""` olarak gönderebilir veya o fieldi hiç jsona ekl
 ### Örnek Kullanım
 
 ```
-"C:\Program Files\ALTERNET\Medicine\Medicine.exe" api.prescription= {"DoctorName":"","DoctorSurname":null,"Drugs":[{"Barcodes":["123412341"]},{"Barcodes":["123412395"]}]}
+"C:\Program Files\ALTERNET\Medicine\Medicine.exe" "api.prescription={\"SenderApplication\":\"Veriyi gönderen uygulama\",\"DoctorName\":\"Doktor Ad\",\"DoctorSurname\":\"Doktor Soyad\",\"Drugs\":[{\"Barcodes\":[\"8699241771590\",\"123412342\",\"123412343\"],\"Difference\":0.0,\"Dosage1\":1,\"Dosage2\":5.0,\"EndDate\":\"21/02/2018\",\"Message\":\"1b.3d\",\"Name\":\"NEXIUM 40 MG.28 TABLET\",\"Period1\":1,\"Period2\":3,\"Price\":50.0,\"Quantity\":1,\"Report\":\"04.03\"}],\"Name\":\"Hasta Adi\",\"PrescriptionNo\":\"1b2b3b4\",\"Surname\":\"Hasta Soyadi\",\"Tc\":\"12345678901\"}"
+
+"C:\Program Files\ALTERNET\Medicine\Medicine.exe" "api.prescription={\"DoctorName\":\"\",\"DoctorSurname\":null,\"Drugs\":[{\"Barcodes\":[\"8699241771590\"]},{\"Barcodes\":[\"123412395\"]}]}"
 ```
 
-# 2. Property Listesi
+# 2. `MedicineHelper` Sınıfı
+
+`MedicineHelper` sınıfı ilaçtarif® uygulamasına reçete ve elden ilaç listesi aktarırken kullanılır.
+
+## 2.1 `MedicineHelper` sınıfı ile veri aktarımı
+
+Demo uygulama [Program.cs](/ConsoleApp1/Program.cs)
+
+``` C#
+Prescription prescription = new Prescription();
+prescription.DoctorName = "Doktor Ad";
+prescription.DoctorSurname = "Doctor Soyad";
+prescription.Name = "Hasta Ad";
+prescription.Surname = "Hasta Soyad";
+prescription.PrescriptionNo = "Recete No";
+prescription.Tc = "hasta tc";
+prescription.SenderApplication = "Demo Otomasyon Uygulamasi";
+prescription.Drugs = new List<Drug> {
+    new Drug {
+        Barcodes = new List<string> {
+            "123412341"
+        },
+        Name = "ILAC ADI",
+        Report = "91.24",
+        Price = 15,
+        Difference = 0,
+        EndDate = "13/13/2323",
+        Message = "yok",
+        Dosage1 = 1,
+        Dosage2 = 2.5F,
+        Period1 = 1,
+        Period2 = PeriodTypes.Gunde,
+        Quantity = 1
+    },
+    new Drug {
+        Barcodes = new List<string> {
+            "123412341"
+        }
+    }
+...
+
+
+IJsonSerializer serializer = new JsonSerializer();
+MedicineHelper helper = new MedicineHelper(serializer);
+helper.Send(prescription);
+```
+
+### Newtonsoft.Json ile JsonSerializer sınıfı örneği
+
+https://github.com/ilactarif/medicine.desktop.api/blob/e102624cd3d18e70ef76ded24318e22028cb67da/ConsoleApp1/Program.cs#L32-L36
+
+
+``` C#
+public class JsonSerializer : IJsonSerializer {
+    public string ToJson(object o) {
+        return Newtonsoft.Json.JsonConvert.SerializeObject(o);
+    }
+}
+````
+
+
+
+# 3. Property Listesi
 
 -   **Name**: Hastanın Adı  
     ![text](./Documentation/Resources/patientname.png)  
@@ -141,33 +207,3 @@ Olmayan bilgileri `null`, `""` olarak gönderebilir veya o fieldi hiç jsona ekl
     ![text](./Documentation/Resources/TotalAmountDueToPharmacy.png)
 
 
-# 3. `MedicineHelper` Sınıfı
-
-`MedicineHelper` sınıfı ilaçtarif® uygulamasına reçete ve elden ilaç listesi aktarırken kullanılır.
-
-## 3.1 `MedicineHelper` sınıfı ile reçete aktarımı
-
-Demo uygulama [Program.cs](/ConsoleApp1/Program.cs)
-
-``` C#
-Prescription prescription = new Prescription();
-...
-//Gerekli reçete bilgilerini doldurunuz.
-
-IJsonSerializer serializer = new JsonSerializer();
-MedicineHelper helper = new MedicineHelper(serializer);
-helper.Send(prescription);
-```
-
-### Newtonsoft.Json ile JsonSerializer sınıfı örneği
-
-https://github.com/ilactarif/medicine.desktop.api/blob/e102624cd3d18e70ef76ded24318e22028cb67da/ConsoleApp1/Program.cs#L32-L36
-
-
-``` C#
-public class JsonSerializer : IJsonSerializer {
-    public string ToJson(object o) {
-        return Newtonsoft.Json.JsonConvert.SerializeObject(o);
-    }
-}
-````
