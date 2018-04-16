@@ -45,6 +45,11 @@ namespace Medicine.Desktop.Api.Models {
         ///     Gönderen Uygulamanın Adı
         /// </summary>
         public string SenderApplication { get; set; }
+
+        /// <summary>
+        ///     Reçetenin en altındaki fiyat bilgileri
+        /// </summary>
+        public PrescriptionAmount Amount { get; set; }
     }
 
 }

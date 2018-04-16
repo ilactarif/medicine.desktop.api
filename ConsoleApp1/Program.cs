@@ -28,20 +28,34 @@ namespace ConsoleApp1 {
                     Report = "91.24",
                     Price = 15,
                     Difference = 0,
-                    EndDate = "13/13/2323",
+                    EndDate = "13/01/2018",
                     Message = "yok",
                     Dosage1 = 1,
                     Dosage2 = 2.5F,
                     Period1 = 1,
                     Period2 = PeriodTypes.Gunde,
-                    Quantity = 1
+                    Quantity = 10,
                 },
                 new Drug {
                     Barcodes = new List<string> {
-                        "123412341"
+                        "8699546032297"
                     }
-                }
+                },
             };
+            //Örnek fiyat etiketi
+            prescription.Amount = new PrescriptionAmount();
+            prescription.Amount.DrugContribution = 2.1F;
+            prescription.Amount.ExaminationContribution_Hand = 0;
+            prescription.Amount.ExaminationContribution_Salary = 59;
+            prescription.Amount.PrescriptionContribution_Hand = 0;
+            prescription.Amount.PrescriptionContribution_Salary = 3;
+            prescription.Amount.PharmacyDiscountAmount = 1.92F;
+            prescription.Amount.PriceDifference = 0;
+            prescription.Amount.Tax18 = 0;
+            prescription.Amount.Tax8 = 0;
+            prescription.Amount.TotalPrice = 40;
+            prescription.Amount.TotalAmountDueToPharmacy = 10;
+            
             helper.Send(prescription);
         }
     }
