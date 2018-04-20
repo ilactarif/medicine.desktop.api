@@ -2,6 +2,7 @@
 
 1.  Fiyat etiketi bilgilerinin girilebileği `Amount` propertysi eklenmiştir.
 2.  `"` işareti bazı bilgisayarlarda sorun oluşturduğu için json Base64e çevrilip gönderilmeye başlanmıştır.
+3.  Eğer hasta Emekli ise `Amount.RetirementStatus`'ü `True` yapınız.
 
 ilaçtarif®'e veri aktarımı
 ==========================
@@ -14,12 +15,13 @@ Veri aktarımı ilaçtarif® uygulamasına argüman göndererek gerçekleşir.
 `Json` dosyasını kendi yöntemleriniz ile veya bizim hazırladığımız
 sınıflar yardımı ile oluşturabilirsiniz.
 
-1. Veri aktarımı genel yapısı
-=============================
+# 1. Veri aktarımı genel yapısı
 
     "C:\Program Files\ALTERNET\Medicine\Medicine.exe" api.prescription=Base64({json})  
 
 ### 1.1 Jsonda bulunabilecek bütün değerler
+
+##### Emekli hasta örnek
 
 ``` json
 {
@@ -31,6 +33,7 @@ sınıflar yardımı ile oluşturabilirsiniz.
     "PrescriptionContribution_Hand": 0.0,
     "PrescriptionContribution_Salary": 3.0,
     "PriceDifference": 0.0,
+    "RetirementStatus": true,
     "Tax18": 0.0,
     "Tax8": 0.0,
     "TotalAmountDueToPharmacy": 10.0,
@@ -45,7 +48,7 @@ sınıflar yardımı ile oluşturabilirsiniz.
       ],
       "Difference": 0.0,
       "Dosage1": 1,
-      "Dosage2": 2.5,
+      "Dosage2": 1.0,
       "EndDate": "13/01/2018",
       "Message": "yok",
       "Name": "ILAC ADI",
@@ -59,17 +62,17 @@ sınıflar yardımı ile oluşturabilirsiniz.
       "Barcodes": [
         "8699546032297"
       ],
-      "Difference": null,
-      "Dosage1": 0,
-      "Dosage2": 0.0,
-      "EndDate": null,
-      "Message": null,
-      "Name": null,
-      "Period1": 0,
-      "Period2": 0,
-      "Price": null,
-      "Quantity": 0,
-      "Report": null
+      "Difference": 0.0,
+      "Dosage1": 8,
+      "Dosage2": 0.5,
+      "EndDate": "13/01/2018",
+      "Message": "yok",
+      "Name": "ILAC ADI",
+      "Period1": 6,
+      "Period2": 1,
+      "Price": 15.0,
+      "Quantity": 3,
+      "Report": "91.24"
     }
   ],
   "Name": "Hasta Ad",
@@ -78,6 +81,12 @@ sınıflar yardımı ile oluşturabilirsiniz.
   "Surname": "Hasta Soyad",
   "Tc": "hasta tc"
 }
+```
+
+#### Örneğin karşılığı
+
+```
+"C:\Program Files\ALTERNET\Medicine\Medicine.exe" "api.prescription=eyJQcmVzY3JpcHRpb25ObyI6IlJlY2V0ZSBObyIsIkRydWdzIjpbeyJOYW1lIjoiSUxBQyBBREkiLCJSZXBvcnQiOiI5MS4yNCIsIlByaWNlIjoxNS4wLCJEaWZmZXJlbmNlIjowLjAsIkVuZERhdGUiOiIxMy8wMS8yMDE4IiwiTWVzc2FnZSI6InlvayIsIlF1YW50aXR5IjoxMCwiQmFyY29kZXMiOlsiODY5OTU0NjAzMTg3MCJdLCJQZXJpb2QxIjoxLCJQZXJpb2QyIjowLCJEb3NhZ2UxIjoxLCJEb3NhZ2UyIjoxLjB9LHsiTmFtZSI6IklMQUMgQURJIiwiUmVwb3J0IjoiOTEuMjQiLCJQcmljZSI6MTUuMCwiRGlmZmVyZW5jZSI6MC4wLCJFbmREYXRlIjoiMTMvMDEvMjAxOCIsIk1lc3NhZ2UiOiJ5b2siLCJRdWFudGl0eSI6MywiQmFyY29kZXMiOlsiODY5OTU0NjAzMjI5NyJdLCJQZXJpb2QxIjo2LCJQZXJpb2QyIjoxLCJEb3NhZ2UxIjo4LCJEb3NhZ2UyIjowLjV9XSwiRG9jdG9yTmFtZSI6IkRva3RvciBBZCIsIkRvY3RvclN1cm5hbWUiOiJEb2N0b3IgU295YWQiLCJOYW1lIjoiSGFzdGEgQWQiLCJTdXJuYW1lIjoiSGFzdGEgU295YWQiLCJUYyI6Imhhc3RhIHRjIiwiU2VuZGVyQXBwbGljYXRpb24iOiJEZW1vIE90b21hc3lvbiBVeWd1bGFtYXNpIiwiQW1vdW50Ijp7IlByZXNjcmlwdGlvbkNvbnRyaWJ1dGlvbl9IYW5kIjowLjAsIlByZXNjcmlwdGlvbkNvbnRyaWJ1dGlvbl9TYWxhcnkiOjMuMCwiRXhhbWluYXRpb25Db250cmlidXRpb25fSGFuZCI6MC4wLCJFeGFtaW5hdGlvbkNvbnRyaWJ1dGlvbl9TYWxhcnkiOjU5LjAsIlBoYXJtYWN5RGlzY291bnRBbW91bnQiOjEuOTIsIkRydWdDb250cmlidXRpb24iOjIuMSwiUHJpY2VEaWZmZXJlbmNlIjowLjAsIlRheDgiOjAuMCwiVGF4MTgiOjAuMCwiVG90YWxQcmljZSI6NDAuMCwiVG90YWxBbW91bnREdWVUb1BoYXJtYWN5IjoxMC4wLCJSZXRpcmVtZW50U3RhdHVzIjp0cnVlfX0="
 ```
 
 Olmayan bilgileri `null`, `""` olarak gönderebilir veya o fieldi hiç
@@ -190,8 +199,8 @@ public class JsonSerializer : IJsonSerializer {
 }
 ```
 
-3. Property Listesi
-===================
+#### 3. Property Listesi
+
 
 -   **Name**: Hastanın Adı
     ![text](./Documentation/Resources/patientname.png)  
