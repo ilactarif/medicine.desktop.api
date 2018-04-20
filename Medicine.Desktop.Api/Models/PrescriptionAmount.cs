@@ -55,6 +55,12 @@
         ///     Hastanın eczaneye ödemesi gereken toplam tutar
         /// </summary>
         public float TotalAmountDueToPharmacy { get; set; }
+        
+        /// <summary>
+        ///     Hastanın emekli olup olmama durumu
+        ///     Eğer emekli ise True olmalı
+        /// </summary>
+        public bool RetirementStatus { get; set; }
     }
 
 }
